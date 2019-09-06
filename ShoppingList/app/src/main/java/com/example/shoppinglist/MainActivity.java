@@ -2,10 +2,13 @@ package com.example.shoppinglist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         this.done = findViewById(R.id.done);
         this.editableText = findViewById(R.id.edit_text_input);
 
+
         // Lista komponentti "tuotteille"
         this.ShoppingList = new ArrayList<String>();
 
@@ -36,9 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
                 String text = editableText.getText().toString();
                 // Todo
-                if (text.length() < 3 && text.length() < 15)
+                if (text.length() > 3 && text.length() < 15)
                 {
+
                     ShoppingList.add(text);
+                    String tostText = "Lisätty listaan";
+                    Toast toast = Toast.makeText(getApplicationContext(), tostText , Toast.LENGTH_SHORT);
+                    toast.show();
+
 
                 }
 
@@ -49,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Todo
+
             }
 
         });

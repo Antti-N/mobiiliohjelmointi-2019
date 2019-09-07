@@ -3,6 +3,7 @@ package com.example.shoppinglist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private Button save;
     private Button done;
     private ArrayList<String> ShoppingList;
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
 
 
@@ -58,7 +60,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Todo
+                Intent intent = new Intent(getApplicationContext(), ShowList.class);
 
+                String text = "";
+
+                if (ShoppingList.size() > 0)
+                for (String item : ShoppingList) {
+
+                    text += item + ", ";
+
+                }
+
+                intent.putExtra(EXTRA_MESSAGE, text);
+
+                startActivity(intent);
             }
 
         });

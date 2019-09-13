@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), tostText , Toast.LENGTH_SHORT);
                     toast.show();
 
-
                 }
 
             }

@@ -59,12 +59,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button3.setOnClickListener(new View.OnClickListener() {
+        button3.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
-                // Button3 functionality
+            public boolean onLongClick(View view) {
                 imageView.setVisibility(View.VISIBLE);
-
+                return true;
             }
         });
     }

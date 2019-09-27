@@ -16,18 +16,22 @@ import java.util.Date;
 
 class DateAdapter extends ArrayAdapter<Date> {
 
+    Context context;
     ArrayList<Date> dates;
+    int resource;
 
     public DateAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Date> objects) {
         super(context, resource, objects);
         this.dates = objects;
+        this.resource = resource;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater i = LayoutInflater.from(getContext());
-        convertView = i.inflate(R.layout.row, null);
+        LayoutInflater i = LayoutInflater.from(context);
+        convertView = i.inflate(resource, parent, false);
 
         Button remove = convertView.findViewById(R.id.rmBtn);
         TextView tv = convertView.findViewById(R.id.dateText);

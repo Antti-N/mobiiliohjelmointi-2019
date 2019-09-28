@@ -13,6 +13,7 @@ public class SpashActivity extends AppCompatActivity {
 
     EditText et;
     Button disable;
+    boolean etState = true;
     String text;
 
     @Override
@@ -30,16 +31,25 @@ public class SpashActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (et.isEnabled()){
                     et.setEnabled(false);
+                    etState = false;
                 } else {
                     et.setEnabled(true);
+                    etState = true;
                 }
             }
         });
+
+        if (savedInstanceState != null) {
+            boolean state = savedInstanceState.getBoolean("etState");
+            et.setEnabled(state);
+            et.setText(text);
+        }
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("etState", etState);
+        outState.putString("text", et.getText().toString());
     }
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isNetworkAvailable()) {
-                    parse(adapter);
+                    parse();
                 }
                 else
                 {
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void parse(final ObjectAdapter adapter) {
+    public void parse() {
         url = "https://webd.savonia.fi/home/ktkoiju/j2me/test_json.php?dates&delay=1";
 
         JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -96,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("Jotain meni nyt pieleen" + e.getMessage());
                     }
                 }
-                adapter.notifyDataSetChanged();
+                Log.e("toimii", "joo");
+                //adapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
             @Override
